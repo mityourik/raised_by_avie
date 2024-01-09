@@ -1,12 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import './Counter.css';
 
 function Counter() {
   const [totalSum, setTotalSum] = useState(0);
   const [transactions, setTransactions] = useState([]);
   const [currentTransactionIndex, setCurrentTransactionIndex] = useState(0);
-  const [descriptionVisible, setDescriptionVisible] = useState(true); // Добавлено состояние для видимости описания
+  const descriptionRef = useRef(null);
+  const [prevDescription, setPrevDescription] = useState('');
 
+  // Загрузка данных транзакции
   useEffect(() => {
     fetch('https://salty-stream-91558-38753e8b9d87.herokuapp.com/transactions')
       .then(response => {
@@ -25,31 +27,39 @@ function Counter() {
       });
   }, []);
 
+  // Изменение индекса транзакции
   useEffect(() => {
     const interval = setInterval(() => {
-      setDescriptionVisible(false); // Скрываем описание перед изменением индекса
-
-      setTimeout(() => {
-        setCurrentTransactionIndex((currentIndex) =>
-          (currentIndex + 1) % transactions.length
-        );
-
-        setDescriptionVisible(true); // Показываем новое описание после изменения индекса
-      }, 1000); // Задержка для синхронизации с анимацией
-
+      setCurrentTransactionIndex((currentIndex) =>
+        (currentIndex + 1) % transactions.length
+      );
     }, 3600);
 
     return () => clearInterval(interval);
   }, [transactions]);
+
+  // Управление анимацией описания
+  useEffect(() => {
+    if (transactions.length > 0 && descriptionRef.current) {
+      const currentDescription = transactions[currentTransactionIndex].description;
+      if (prevDescription !== currentDescription) {
+        descriptionRef.current.style.animation = 'none';
+        setTimeout(() => {
+          descriptionRef.current.style.animation = '';
+        }, 10); // Перезапуск анимации
+        setPrevDescription(currentDescription);
+      }
+    }
+  }, [currentTransactionIndex, transactions]);
 
   return (
     <section className="counter">
       <h1 className='counter__title'>-{totalSum}р.</h1>
       <div className='sdf'>
         {transactions.length > 0 && (
-            <p className={`description ${descriptionVisible ? 'visible' : ''}`}>
-                {transactions[currentTransactionIndex].description} - {transactions[currentTransactionIndex].sum}руб.
-            </p>
+          <p ref={descriptionRef} className={`description`}>
+            {transactions[currentTransactionIndex].description} {transactions[currentTransactionIndex].sum}руб.
+          </p>
         )}
       </div>
     </section>

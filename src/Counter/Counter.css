@@ -32,31 +32,36 @@
 }
 
 .description {
-    color: #ff0055; /* Яркий цвет текста */
-    text-shadow: 
-    1px 1px 4px rgba(255, 0, 85, 0.9), /* Сияние */
-    0.5px 0.5px 0 #d60, 
-    0.5px 0.5px 0 #930, 
-    0.5px 0.5px 0 #630;
-    text-align: center;
-    margin: 200px auto; /* Центрирование по горизонтали */
-    padding: 0;
-    animation: appearAndDisappear 3.5s ease infinite;
-    opacity: 0;
-    max-width: 200px;
+  color: #ff0055; /* Яркий цвет текста */
+  text-shadow: 
+  1px 1px 4px rgba(255, 0, 85, 0.9), /* Сияние */
+  0.5px 0.5px 0 #d60, 
+  0.5px 0.5px 0 #930, 
+  0.5px 0.5px 0 #630;
+  text-align: center;
+  margin: 200px auto; /* Центрирование по горизонтали */
+  padding: 0;
+  animation: appearAndDisappear 3.6s ease infinite, changeDescription 3.5s ease infinite;
+  opacity: 0;
+  max-width: 200px;
+  border-radius: 20px;
 }
 
-@keyframes appearAndDisappear {
-    0% {
-      transform: scale(0);
-      opacity: 0;
-    }
-    30% {
-      transform: scale(3);
-      opacity: 1;
-    }
-    100% {
-      transform: scale(20);
-      opacity: 0;
-    }
+@keyframes changeDescription {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  40% {
+    transform: scale(1.7);
+    opacity: 1;
+  }
+  60% {
+    transform: scale(1.7);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(20);
+    opacity: 0;
+  }
 }

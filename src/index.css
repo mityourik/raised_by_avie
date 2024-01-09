@@ -42,8 +42,9 @@ h1 {
 
 button {
   position: absolute;
-  top: 80px;
-  left: 20px;
+  top: 3%;
+  left: 46%;
+  transform: translate(-50%, -50%);
   animation: shake 2s infinite;
   background-color: transparent;
   border: none;
@@ -59,6 +60,7 @@ button {
     2px 2px 0 #d60, 
     3px 3px 0 #930, 
     4px 4px 0 #630;
+  padding: 0;
 }
 
 @keyframes shake {
