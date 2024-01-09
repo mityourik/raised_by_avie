@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AAVIEEE</title>
+    <script type="module" crossorigin src="./assets/index-KXYWCzk0.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-R7-_nkAC.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <button id="audioControl">Нажми</button>
+    <audio id="backgroundMusic" loop>
+      <source src='./assets/Stranger Things (Main Theme) - UnknownMorsel-oRuUQen4.mp3' />
+      Ваш браузер не поддерживает аудио элемент.
+    </audio>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        let audioElem = document.getElementById('backgroundMusic');
+        let audioControl = document.getElementById('audioControl');
+    
+        audioControl.addEventListener('click', function() {
+          if (audioElem.paused) {
+            audioElem.play();
+            audioControl.textContent = 'Не ОК';
+          } else {
+            audioElem.pause();
+            audioControl.textContent = 'ОК';
+          }
+        });
+      });
+    </script> 
+  </body>
+</html>
