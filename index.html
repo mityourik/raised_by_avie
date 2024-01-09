@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AAVIEEE</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+    <button id="audioControl">Нажми</button>
+    <audio id="backgroundMusic" loop>
+      <source src='./Stranger Things (Main Theme) - UnknownMorsel.mp3' />
+      Ваш браузер не поддерживает аудио элемент.
+    </audio>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        let audioElem = document.getElementById('backgroundMusic');
+        let audioControl = document.getElementById('audioControl');
+    
+        audioControl.addEventListener('click', function() {
+          if (audioElem.paused) {
+            audioElem.play();
+            audioControl.textContent = 'Не ОК';
+          } else {
+            audioElem.pause();
+            audioControl.textContent = 'ОК';
+          }
+        });
+      });
+    </script> 
+  </body>
+</html>
