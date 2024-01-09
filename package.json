@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://mityourik.github.io/ваш_репозиторий",
+  "homepage": "https://mityourik.github.io/raised_by_avie",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
