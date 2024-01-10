@@ -8,7 +8,6 @@ function Counter() {
   const descriptionRef = useRef(null);
   const [prevDescription, setPrevDescription] = useState('');
 
-  // Загрузка данных транзакции
   useEffect(() => {
     fetch('https://salty-stream-91558-38753e8b9d87.herokuapp.com/transactions')
       .then(response => {
@@ -27,7 +26,6 @@ function Counter() {
       });
   }, []);
 
-  // Изменение индекса транзакции
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTransactionIndex((currentIndex) =>
@@ -38,7 +36,6 @@ function Counter() {
     return () => clearInterval(interval);
   }, [transactions]);
 
-  // Управление анимацией описания
   useEffect(() => {
     if (transactions.length > 0 && descriptionRef.current) {
       const currentDescription = transactions[currentTransactionIndex].description;
@@ -46,7 +43,7 @@ function Counter() {
         descriptionRef.current.style.animation = 'none';
         setTimeout(() => {
           descriptionRef.current.style.animation = '';
-        }, 10); // Перезапуск анимации
+        }, 10);
         setPrevDescription(currentDescription);
       }
     }

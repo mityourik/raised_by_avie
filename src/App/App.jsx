@@ -6,6 +6,7 @@ function App() {
 
   return (
     <body className='body'>
+      <div className="glitch-layer" />
       <div className='page'>
         <Counter />
       </div>
