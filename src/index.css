@@ -33,6 +33,7 @@ a:hover {
   background-position: center;
   background-repeat: no-repeat;
   height: 100vh;
+  
 }
 
 .glitch-layer {
@@ -43,26 +44,21 @@ a:hover {
   bottom: 0;
   pointer-events: none; /* Позволяет взаимодействовать с элементами под этим слоем */
   z-index: 10; /* Убедитесь, что слой находится поверх всех других элементов */
-  animation: glitch 1s infinite;
   background-image: url('./images/noise__layer.png'); /* Путь к вашему изображению помех */
   background-repeat: repeat; /* Повторение изображения */
-  opacity: 0.5; /* Настройте прозрачность для достижения желаемого эффекта */
-  animation: glitch 0.01s infinite, noise 0.09s linear;
-  opacity: 0.12;
+  animation: rotate 60s linear infinite;
+  opacity: 0.15;
+  scale: 8;
 }
 
-@keyframes glitch {
-  0%, 100% {
-    transform: translate(0);
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
   }
-  10%, 30%, 50%, 70%, 90% {
-    transform: translate(-5px, 5px);
-  }
-  20%, 40%, 60%, 80% {
-    transform: translate(5px, -5px);
+  100% {
+    transform: rotate(360deg);
   }
 }
-
 
 h1 {
   font-size: 3.2em;
@@ -90,32 +86,4 @@ button {
     3px 3px 0 #930, 
     4px 4px 0 #630;
   padding: 0;
-}
-
-@keyframes shake {
-  0%, 100% { transform: translateY(0); }
-  25% { transform: translateY(-2px); }
-  50% { transform: translateY(2px); }
-  75% { transform: translateY(-2px); }
-}
-
-@keyframes glitch {
-  0%, 100% {
-    transform: translate(0);
-  }
-  10%, 30%, 50%, 70%, 90% {
-    transform: translate(-5px, 5px);
-  }
-  20%, 40%, 60%, 80% {
-    transform: translate(5px, -5px);
-  }
-}
-
-@keyframes noise {
-  0% { transform: scale(1) translate(0px); }
-  20% { transform: scale(1.05) translate(-2px, 2px); }
-  40% { transform: scale(1.1) translate(2px, -2px); }
-  60% { transform: scale(1.05) translate(-2px, 2px); }
-  80% { transform: scale(1) translate(2px, -2px); }
-  100% { transform: scale(1) translate(0px); }
 }

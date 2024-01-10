@@ -1,4 +1,3 @@
-
 import Counter from '../Counter/Counter'
 import './App.css'
 
@@ -11,7 +10,6 @@ function App() {
         <Counter />
       </div>
     </body>
-    
   )
 }
 
