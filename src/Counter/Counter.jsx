@@ -1,15 +1,13 @@
-import { useEffect, useState, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import './Counter.css';
+const urlAvie = 'https://damp-atoll-76234-0960ac4bbb45.herokuapp.com/data';
 
 function Counter() {
-  const [totalSum, setTotalSum] = useState(0);
-  const [transactions, setTransactions] = useState([]);
-  const [currentTransactionIndex, setCurrentTransactionIndex] = useState(0);
-  const descriptionRef = useRef(null);
-  const [prevDescription, setPrevDescription] = useState('');
+  // Создаем состояние для хранения данных
+  const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch('https://salty-stream-91558-38753e8b9d87.herokuapp.com/transactions')
+    fetch(urlAvie)
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -17,47 +15,30 @@ function Counter() {
         return response.json();
       })
       .then(data => {
-        setTransactions(data);
-        const sum = data.reduce((acc, item) => acc + item.sum, 0);
-        setTotalSum(sum);
+        setData(data);
       })
       .catch(error => {
-        console.error('There has been a problem with your fetch operation:', error);
+        console.error('There was a problem with your fetch operation:', error);
       });
   }, []);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTransactionIndex((currentIndex) =>
-        (currentIndex + 1) % transactions.length
-      );
-    }, 3600);
-
-    return () => clearInterval(interval);
-  }, [transactions]);
-
-  useEffect(() => {
-    if (transactions.length > 0 && descriptionRef.current) {
-      const currentDescription = transactions[currentTransactionIndex].description;
-      if (prevDescription !== currentDescription) {
-        descriptionRef.current.style.animation = 'none';
-        setTimeout(() => {
-          descriptionRef.current.style.animation = '';
-        }, 10);
-        setPrevDescription(currentDescription);
-      }
-    }
-  }, [currentTransactionIndex, transactions]);
-
   return (
-    <section className="counter">
-      <h1 className='counter__title'>-{totalSum}р.</h1>
-      <div className='sdf'>
-        {transactions.length > 0 && (
-          <p ref={descriptionRef} className={`description`}>
-            {transactions[currentTransactionIndex].description} {transactions[currentTransactionIndex].sum}руб.
-          </p>
-        )}
+    <section className='counter'>
+      <h3 className='counter__undertitle'>на сегодня</h3>
+      <h1 className='counter__title'>{data ? data.amount : 'Ща...'}</h1>
+      <div className='description'>
+        <p className='description__transport'>
+          {data ? `Транспорт - ${data.transport}` : 'Данные загружаются...'}
+        </p>
+        <p className='description__food'>
+          {data ? `Еда - ${data.food}` : 'Данные загружаются...'}
+        </p>
+        <p className='description__apartments'>
+          {data ? `Аренда жилья - ${data.apartments}` : 'Данные загружаются...'}
+        </p>
+        <p className='description__phone'>
+          {data ? `Услуги связи - ${data.phone}` : 'Данные загружаются...'}
+        </p>
       </div>
     </section>
   );

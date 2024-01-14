@@ -1,9 +1,9 @@
 .counter {
-    margin: 0 auto;
-    padding: 0;
-    overflow: hidden;
-    position: relative;
-    height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh; /* Высота на весь экран */
 }
 
 .counter__title {
@@ -13,7 +13,7 @@
     font-weight: 500;
     line-height: normal;
     margin: 0;
-    padding: 40px 0 0 0;
+    padding: 0;
     color: #ff0055; /* Яркий цвет текста */
     text-shadow: 
     1px 1px 10px rgba(255, 0, 85, 0.9), /* Сияние */
@@ -21,7 +21,29 @@
     3px 3px 0 #930, 
     4px 4px 0 #630;
     text-align: center;
-    animation: shake 2s infinite;
+    animation: shake 3s infinite;
+    max-width: 400px;
+}
+
+.counter__title:hover {
+  background-color: rgb(51, 47, 47);
+}
+
+/* Стили для контейнера с описаниями */
+.description{
+  text-align: center; /* Центрирование текста */
+}
+
+/* Общие стили для описаний */
+.description p {
+  font-weight: normal;
+  transition: font-weight 0.5s ease; /* Плавное изменение жирности */
+}
+
+/* Изменение жирности при наведении */
+.description p:hover {
+  font-weight: bold;
+  background-color: rgb(51, 47, 47);
 }
 
 @keyframes shake {
@@ -31,37 +53,5 @@
     75% { transform: translateY(-2px); }
 }
 
-.description {
-  color: #ff0055; /* Яркий цвет текста */
-  text-shadow: 
-  1px 1px 4px rgba(255, 0, 85, 0.9), /* Сияние */
-  0.5px 0.5px 0 #d60, 
-  0.5px 0.5px 0 #930, 
-  0.5px 0.5px 0 #630;
-  text-align: center;
-  margin: 200px auto; /* Центрирование по горизонтали */
-  padding: 0;
-  animation: appearAndDisappear 3.6s ease infinite, changeDescription 3.5s ease infinite;
-  opacity: 0;
-  max-width: 200px;
-  border-radius: 20px;
-}
-
-@keyframes changeDescription {
-  0% {
-    transform: scale(0);
-    opacity: 0;
-  }
-  40% {
-    transform: scale(1.7);
-    opacity: 1;
-  }
-  60% {
-    transform: scale(1.7);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(20);
-    opacity: 0;
-  }
+.description__food {
 }
