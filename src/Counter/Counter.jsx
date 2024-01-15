@@ -31,13 +31,13 @@ function Counter() {
           {data ? `Транспорт - ${data.transport}` : 'Данные загружаются...'}
         </p>
         <p className='description__food'>
-          {data ? `Еда - ${data.food}` : 'Данные загружаются...'}
+          {data ? `Питание - ${data.food}` : 'Данные загружаются...'}
         </p>
         <p className='description__apartments'>
-          {data ? `Аренда жилья - ${data.apartments}` : 'Данные загружаются...'}
+          {data ? `Проживание - ${data.apartments}` : 'Данные загружаются...'}
         </p>
         <p className='description__phone'>
-          {data ? `Услуги связи - ${data.phone}` : 'Данные загружаются...'}
+          {data ? `Прочее - ${data.other}` : 'Данные загружаются...'}
         </p>
       </div>
     </section>
