@@ -2,15 +2,11 @@
 
 ## Description
 
-This frontend project is part of the [api-avie-sheets](https://github.com/mityourik/api-avie-sheets)
- application designed to interact with blogger Avie's budget data. It provides a user interface for accessing and manipulating budget data stored in a private Google Sheets document, through the backend API.
+This is the frontend part for the [api-avie-sheets](https://github.com/mityourik/api-avie-sheets) API application
+, developed for tracking a blogger's budget across key spending categories. It provides the user with real-time information. The information is requested from a private Google Sheets document, through the backend API.
 
 ## Technology Stack
-- HTML
-- CSS
-- JavaScript
-- React
-- API
+HTML, CSS, JavaScript, React, API
 
 ## Installation and Setup
 
