@@ -3,7 +3,6 @@ import './Counter.css';
 const urlAvie = 'https://damp-atoll-76234-0960ac4bbb45.herokuapp.com/data';
 
 function Counter() {
-  // Создаем состояние для хранения данных
   const [data, setData] = useState(null);
 
   useEffect(() => {
